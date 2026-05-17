@@ -1,0 +1,19 @@
+test_id,username,password,expected_text,xpath_to_verify,should_logout
+TC001001,student,moodle26,Dashboard,//header[@id='page-header']/div/div[2]/div/div/div,TRUE
+TC001002,student,moodle,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001003,student,something,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001004,alicehill,moodle25,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001005,markellis,moodle,Dashboard,//header[@id='page-header']/div/div[2]/div/div/div,TRUE
+TC001006,alicehill,,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001007,noname,moodle25,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001008,,moodle,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001009,,,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001010,manager,moodle26,Dashboard,//header[@id='page-header']/div/div[2]/div/div/div,TRUE
+TC001011,teacher,moodle,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001012,peterkelly,moodle,Please read our Cookie statement,//div[@id='region-main']/div/div[2]/h3,TRUE
+TC001013,user,moodle,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001014,parent,moodle26,Dashboard,//header[@id='page-header']/div/div[2]/div/div/div,TRUE
+TC001015,parent,moodle,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001016,henryross,moodle,Please read our Cookie statement,//div[@id='region-main']/div/div[2]/h3,TRUE
+TC001017,alicehill,anything,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001018,user,random,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE

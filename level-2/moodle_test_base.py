@@ -25,6 +25,10 @@ class MoodleDataDrivenTestCase(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
+    def restart_driver(self):
+        self.driver.quit()
+        self.driver = self.create_driver()
+
     def create_driver(self):
         driver_path = os.environ.get("CHROME_DRIVER_PATH", "")
         chrome_binary_path = os.environ.get("CHROME_BINARY_PATH", "")
@@ -231,8 +235,23 @@ class MoodleDataDrivenTestCase(unittest.TestCase):
         return True
 
     def login(self, row):
+        if self.is_logged_in():
+            self.log_step("Already logged in")
+            return
+
         self.log_step("Open login page")
         self.driver.get(row["login_url"])
+
+        if not self.wait_for_login_form_or_session(timeout=12):
+            self.driver.get(row["site_url"])
+            if self.wait_for_logged_in(timeout=8):
+                self.log_step("Already logged in")
+                return
+
+        if self.is_logged_in():
+            self.log_step("Already logged in")
+            return
+
         self.log_step("Enter username and password")
         self.type_text(By.ID, "username", row["username"])
         self.type_text(By.ID, "password", row["password"])
@@ -261,6 +280,28 @@ class MoodleDataDrivenTestCase(unittest.TestCase):
             or self.is_element_present(By.CSS_SELECTOR, "#loginerrormessage, .loginerrors, .alert-danger")
         )
         self.assertNotIn("login/index.php", self.driver.current_url, "Login failed; still on login page.")
+
+    def is_logged_in(self):
+        return self.is_element_present(By.ID, "user-menu-toggle") or self.is_element_present(
+            By.CSS_SELECTOR,
+            "[data-region='user-menu']",
+        )
+
+    def wait_for_logged_in(self, timeout=10):
+        try:
+            WebDriverWait(self.driver, timeout).until(lambda driver: self.is_logged_in())
+            return True
+        except TimeoutException:
+            return False
+
+    def wait_for_login_form_or_session(self, timeout=10):
+        try:
+            WebDriverWait(self.driver, timeout).until(
+                lambda driver: self.is_element_present(By.ID, "username") or self.is_logged_in()
+            )
+            return True
+        except TimeoutException:
+            return False
 
     def ensure_checkbox_checked(self, checkbox_id):
         checkbox = self.wait_for_stable_element(By.ID, checkbox_id)
