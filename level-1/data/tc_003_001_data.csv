@@ -1,0 +1,2 @@
+test_case,site_url,login_url,username,password,course_xpath,edit_mode_checkbox_xpath,insert_button_xpath
+TC-003-001,https://school.moodledemo.net/,https://school.moodledemo.net/login/index.php,teacher,moodle26,"//a[contains(@href, 'course/view.php?id=75') and contains(normalize-space(.), 'Feline Welfare')]","//input[@type=""checkbox"" and @name=""setmode""]","//button[contains(@title, ""Add content"")]"
