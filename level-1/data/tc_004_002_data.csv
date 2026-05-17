@@ -1,0 +1,3 @@
+tc_id,search_keyword,user_name,role,expected_result
+TC004009,Anna,Anna Alexander,Student,Pass
+TC004010,Anna,Anna Alexander,Non-editing teacher,Pass

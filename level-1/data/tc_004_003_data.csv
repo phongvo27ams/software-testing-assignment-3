@@ -1,0 +1,6 @@
+tc_id,search_input,user_name,user_found,should_enrol,expected_result
+TC004007,Anna,Anna Alexander,True,True,Pass
+TC004008,annaalexand246@example.com,Anna Alexander,True,True,Pass
+TC004011,xyzNonExistentUser99999,,False,False,Pass
+TC004012,,,False,False,Pass
+TC004013,Anna,Anna Alexander,True,True,Pass

@@ -1,0 +1,7 @@
+tc_id,search_keyword,user_name,start_day,start_month,start_year,end_enabled,end_day,end_month,end_year,expected_result
+TC004001,Anna,Anna Alexander,19,April,2026,True,18,April,2026,Fail
+TC004002,Anna,Anna Alexander,20,April,2026,True,20,April,2026,Pass
+TC004003,Anna,Anna Alexander,20,April,2026,True,21,April,2026,Pass
+TC004004,Anna,Anna Alexander,18,April,2026,True,19,April,2026,Pass
+TC004005,Anna,Anna Alexander,20,April,2026,True,19,April,2026,Fail
+TC004006,Anna,Anna Alexander,20,April,2026,False,,,,Pass

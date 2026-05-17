@@ -1,0 +1,11 @@
+tc_id,search_keyword,user_name,role,start_day,start_month,start_year,end_enabled,end_day,end_month,end_year,expected_result
+TC004001,Anna,Anna Alexander,Student,19,April,2026,True,18,April,2026,Fail
+TC004002,Anna,Anna Alexander,Student,20,April,2026,True,20,April,2026,Pass
+TC004003,Anna,Anna Alexander,Student,20,April,2026,True,21,April,2026,Pass
+TC004004,Anna,Anna Alexander,Student,18,April,2026,True,19,April,2026,Pass
+TC004005,Anna,Anna Alexander,Student,20,April,2026,True,19,April,2026,Fail
+TC004006,Anna,Anna Alexander,Student,20,April,2026,False,,,,Pass
+TC004007,Anna,Anna Alexander,Student,,,,False,,,,Pass
+TC004008,annaalexand246@example.com,Anna Alexander,Student,,,,False,,,,Pass
+TC004009,Anna,Anna Alexander,Student,,,,False,,,,Pass
+TC004010,Anna,Anna Alexander,Non-editing teacher,,,,False,,,,Pass

@@ -1,0 +1,2 @@
+test_case,site_url,login_url,username,password,course_url,expected_element_id,max_load_seconds
+NF-TC-002,https://school.moodledemo.net/,https://school.moodledemo.net/login/index.php,manager,moodle26,https://school.moodledemo.net/course/edit.php?category=0,id_fullname,10

@@ -17,8 +17,8 @@ from selenium.webdriver.common.by import By
 
 class MoodlePerformanceTest(MoodleDataDrivenTestCase):
     TEST_CASE = "PERF-001"
-    DATA_FILE = "performance_test_data.csv"
-    LOG_PREFIX = "Performance"
+    DATA_FILE = "nf_tc_003_data.csv"
+    LOG_PREFIX = "NF-TC-003"
 
     def read_data(self):
         data_file = Path(__file__).resolve().parent / "data" / self.DATA_FILE

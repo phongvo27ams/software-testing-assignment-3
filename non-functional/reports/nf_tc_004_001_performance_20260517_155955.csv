@@ -1,0 +1,6 @@
+step,elapsed_s,sla_s,status
+login_page_load,4.277,15.000,PASS
+participants_page_load,0.754,15.000,PASS
+enrol_dialog_open,1.266,10.000,PASS
+autocomplete_response,2.948,8.000,PASS
+enrol_submission,10.593,15.000,PASS

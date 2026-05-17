@@ -1,26 +1,29 @@
-# Moodle Data-driven Automation Testing
+# Mount Orange University Data-driven Automation Testing
 
-This project contains Python Selenium `unittest` automation scripts for Mount Orange University Moodle test cases from Project #2.
+This project contains Selenium WebDriver automation tests for Mount Orange University Moodle. The tests are written in Python `unittest` and organized into functional data-driven tests and non-functional tests.
 
 The project includes:
 
-- `level-1`: data-driven automation testing. Test input data and expected results are read from CSV files.
-- `level-2`: data-driven automation testing where both test data and test items are read from CSV files. Test items include URLs, input locators, button locators, expected-result locators, and expected UI states.
-- `non-functional`: automated Performance Testing for the main Moodle quiz creation flow.
+- `level-1`: data-driven tests where input data and expected results are read from CSV files.
+- `level-2`: data-driven tests where input data, expected results, URLs, locators, and other test items are externalized to CSV files.
+- `non-functional`: security and performance tests for login, course creation, quiz creation, and enrolment workflows.
 
 ## Project Structure
 
 ```text
 Assignment 3/
+  README.md
   requirements.txt
   description.pdf
-  README.md
+
   level-1/
     data/
     moodle_test_base.py
     moodle_quiz_prepare.py
+    moodle_enrol_helpers.py
     run_grouped_tests.py
     tc_001.py
+    tc_002.py
     tc_003_001.py
     tc_003_002.py
     tc_003_003_005_006.py
@@ -33,11 +36,17 @@ Assignment 3/
     tc_003_026_027.py
     tc_003_028_029.py
     tc_003_030_039.py
+    tc_004_001.py
+    tc_004_002.py
+    tc_004_003.py
+
   level-2/
     data/
     moodle_test_base.py
     moodle_quiz_prepare.py
     run_grouped_tests.py
+    tc_001.py
+    tc_002.py
     tc_003_001.py
     tc_003_002.py
     tc_003_003_005_006.py
@@ -50,32 +59,34 @@ Assignment 3/
     tc_003_026_027.py
     tc_003_028_029.py
     tc_003_030_039.py
+    tc_004.py
+
   non-functional/
     data/
-    performance_test.py
+    reports/
+    nf_tc_001.py
+    nf_tc_002.py
+    nf_tc_003.py
+    nf_tc_004_001.py
+    nf_tc_004_002.py
+    run_nf_tests.py
 ```
-
-## Common Helpers
-
-- `moodle_test_base.py`: shared Selenium setup, CSV loading, login, click/type helpers, rich text editor helpers, select helpers, and common assertions.
-- `moodle_quiz_prepare.py`: reusable Moodle preconditions, such as opening a new quiz form or opening the Multiple choice question form.
-- `run_grouped_tests.py`: runs the grouped automation test cases.
 
 ## Requirements
 
 - Windows
 - Python 3.12
-- Google Chrome for Testing
-- ChromeDriver matching the Chrome for Testing version
-- Python packages listed in `requirements.txt`
+- Google Chrome or Chrome for Testing
+- ChromeDriver matching the Chrome version
+- Python packages from `requirements.txt`
 
-Install Python dependencies:
+Install dependencies:
 
 ```powershell
 pip install -r requirements.txt
 ```
 
-Current dependencies:
+Current Python dependencies:
 
 ```text
 selenium==3.141.0
@@ -84,7 +95,7 @@ urllib3==1.26.7
 
 ## Browser Setup
 
-Download and extract Chrome for Testing and ChromeDriver. A recommended local layout is:
+Download Chrome for Testing and ChromeDriver with the same major version. A recommended layout is:
 
 ```text
 D:\Tools\chrome-win64\chrome.exe
@@ -98,102 +109,144 @@ $env:CHROME_DRIVER_PATH="D:\Tools\chromedriver-win64\chromedriver.exe"
 $env:CHROME_BINARY_PATH="D:\Tools\chrome-win64\chrome.exe"
 ```
 
-`CHROME_BINARY_PATH` is optional only when your system Chrome version matches ChromeDriver.
+`CHROME_BINARY_PATH` is optional only when the installed system Chrome version matches ChromeDriver.
 
-## Grouped Test Flows
+## Shared Helpers
 
-Similar manual test cases with the same workflow are grouped into one automation script. Each grouped script reads multiple rows from CSV and runs each row as a `subTest`.
+- `moodle_test_base.py`: shared Chrome setup, CSV loading, login, click/type helpers, rich text editor helpers, select helpers, and common assertions.
+- `moodle_quiz_prepare.py`: reusable quiz preconditions, such as opening a new quiz form or opening the Multiple choice question form.
+- `moodle_enrol_helpers.py`: reusable enrolment helpers for Level 1 TC004 flows.
+- `run_grouped_tests.py`: loads and runs all grouped functional test modules in a level folder.
+- `run_nf_tests.py`: loads and runs all non-functional test modules.
 
-| Script | Covered test cases | Main flow |
-| --- | --- | --- |
-| `level-1/tc_001.py` | TC001001 to TC001018 | Login validation with valid and invalid accounts |
-| `tc_003_001.py` | TC-003-001 | Login, open course, enable edit mode |
-| `tc_003_002.py` | TC-003-002 | Add Quiz activity |
-| `tc_003_003_005_006.py` | TC-003-003, TC-003-005, TC-003-006 | Create quiz and verify quiz page |
-| `tc_003_004.py` | TC-003-004 | Create quiz with description, time limit, grade, password |
-| `tc_003_007_010.py` | TC-003-007 to TC-003-010 | Quiz name validation and boundary testing |
-| `tc_003_011_013.py` | TC-003-011 to TC-003-013 | Time limit validation |
-| `tc_003_014_020.py` | TC-003-014 to TC-003-020 | Grade to pass validation |
-| `tc_003_021_024.py` | TC-003-021 to TC-003-024 | Quiz password and Questions page |
-| `tc_003_025.py` | TC-003-025 | Open Multiple choice question form |
-| `tc_003_026_027.py` | TC-003-026 to TC-003-027 | Create valid Multiple choice questions |
-| `tc_003_028_029.py` | TC-003-028 to TC-003-029 | Required-field validation for Multiple choice question |
-| `tc_003_030_039.py` | TC-003-030 to TC-003-039 | Default mark, choices, and answer fraction validation |
+## Level 1
 
-## Run Level 1
+Level 1 keeps browser actions and locators mostly in Python code. CSV files under `level-1/data` provide test input values and expected results.
 
-Run all grouped Level 1 test cases:
+Run all Level 1 grouped tests:
 
 ```powershell
 python level-1\run_grouped_tests.py
 ```
 
-Run one grouped Level 1 flow:
+Run one Level 1 test flow:
 
 ```powershell
 python level-1\tc_001.py
+python level-1\tc_002.py
 python level-1\tc_003_003_005_006.py
 python level-1\tc_003_011_013.py
 python level-1\tc_003_030_039.py
+python level-1\tc_004_001.py
+python level-1\tc_004_002.py
+python level-1\tc_004_003.py
 ```
 
-## Run Level 2
+## Level 2
 
-Level 2 uses the same grouped workflows as Level 1, but CSV files under `level-2/data` contain both testing data and testing items such as URLs and locators.
+Level 2 externalizes more test items into CSV. Besides input data and expected results, CSV files can contain URLs, locators, button IDs, expected-result locators, and expected UI states.
 
-Run all grouped Level 2 test cases:
+Run all Level 2 grouped tests:
 
 ```powershell
 python level-2\run_grouped_tests.py
 ```
 
-Run one grouped Level 2 flow:
+Run one Level 2 test flow:
 
 ```powershell
+python level-2\tc_001.py
+python level-2\tc_002.py
 python level-2\tc_003_003_005_006.py
 python level-2\tc_003_011_013.py
 python level-2\tc_003_030_039.py
+python level-2\tc_004.py
 ```
 
-## Non-functional Testing - Performance
+## Grouped Functional Test Flows
 
-Testing type: Performance Testing.
+Similar manual test cases with the same workflow are grouped into one automation script. Each data row is executed as a `subTest`.
 
-Objective: measure whether the main Moodle quiz creation flow completes within acceptable response-time thresholds.
+| Flow | Covered test cases | Description |
+| --- | --- | --- |
+| `tc_001.py` | TC001001 to TC001018 | Login validation |
+| `tc_002.py` | TC002001 to TC002023 | Course creation validation |
+| `tc_003_001.py` | TC-003-001 | Login, open course, enable edit mode |
+| `tc_003_002.py` | TC-003-002 | Add Quiz activity |
+| `tc_003_003_005_006.py` | TC-003-003, TC-003-005, TC-003-006 | Create quiz and verify quiz page |
+| `tc_003_004.py` | TC-003-004 | Create quiz with description, time limit, grade, and password |
+| `tc_003_007_010.py` | TC-003-007 to TC-003-010 | Quiz name validation and boundary testing |
+| `tc_003_011_013.py` | TC-003-011 to TC-003-013 | Time limit validation |
+| `tc_003_014_020.py` | TC-003-014 to TC-003-020 | Grade to pass validation |
+| `tc_003_021_024.py` | TC-003-021 to TC-003-024 | Quiz password and Questions page validation |
+| `tc_003_025.py` | TC-003-025 | Open Multiple choice question form |
+| `tc_003_026_027.py` | TC-003-026 to TC-003-027 | Create valid Multiple choice questions |
+| `tc_003_028_029.py` | TC-003-028 to TC-003-029 | Required-field validation for Multiple choice question |
+| `tc_003_030_039.py` | TC-003-030 to TC-003-039 | Default mark, choices, and answer fraction validation |
+| `level-1/tc_004_001.py` | TC004001 to TC004006 | Enrol user with date configurations |
+| `level-1/tc_004_002.py` | TC004009 to TC004010 | Enrol user with different roles |
+| `level-1/tc_004_003.py` | TC004007, TC004008, TC004011 to TC004013 | Enrol user search variations |
+| `level-2/tc_004.py` | TC004001 to TC004010 | Fully externalized enrolment workflow using config, locators, and data CSV files |
 
-The automated performance flow measures:
+## Non-functional Tests
 
-- Open Moodle home page
-- Login
-- Open target course
-- Enable edit mode
-- Open the New Quiz form
-- Total flow duration
+Implemented non-functional test cases:
 
-Tool:
+| Script | Type | Description |
+| --- | --- | --- |
+| `nf_tc_001.py` | Security | Verify that the login password field is masked |
+| `nf_tc_002.py` | Performance | Verify that the course creation page loads within threshold |
+| `nf_tc_003.py` | Performance | Measure the main Moodle quiz creation flow |
+| `nf_tc_004_001.py` | Performance | Measure the enrolment workflow and write a CSV report |
+| `nf_tc_004_002.py` | Security | Test enrolment search input against XSS, SQL injection, HTML injection, and sensitive error leakage |
 
-- Python `unittest`
-- Selenium WebDriver
-- ChromeDriver
-- Python `time.perf_counter()`
-
-Performance thresholds and UI test items are stored in:
-
-```text
-non-functional\data\performance_test_data.csv
-```
-
-Run the performance test:
+Run all non-functional tests:
 
 ```powershell
-python non-functional\performance_test.py
+python non-functional\run_nf_tests.py
 ```
 
-Pass criteria: every measured step must be less than or equal to the configured threshold in the CSV file.
+Run one non-functional test:
+
+```powershell
+python non-functional\nf_tc_001.py
+python non-functional\nf_tc_002.py
+python non-functional\nf_tc_003.py
+python non-functional\nf_tc_004_001.py
+python non-functional\nf_tc_004_002.py
+```
+
+Non-functional data files are stored under:
+
+```text
+non-functional\data\
+```
+
+Performance reports are written to:
+
+```text
+non-functional\reports\
+```
+
+## Expected Output
+
+`unittest` output uses standard markers:
+
+- `.` means a test/subtest passed.
+- `F` means assertion failure.
+- `E` means runtime error.
+- `OK` means the selected suite completed successfully.
+
+Chrome may print internal warnings such as GCM, EGL, WebGPU, or sandbox messages. These messages are not test failures if `unittest` reports `OK`.
 
 ## Notes
 
-- Each grouped script is one automation test case for one shared workflow.
-- For grouped scripts, each row restarts the browser after the first row to keep rows independent and stable.
-- Chrome may print internal warnings such as GCM, EGL, or sandbox messages. If `unittest` still reports `OK`, those Chrome messages are not test failures.
-- `.` in unittest output means one test passed. `OK` is printed after the whole selected suite finishes.
+- Each grouped script represents one automation test case for one shared workflow.
+- Most grouped scripts restart the browser between data rows to keep rows independent and stable.
+- The tests run against the public Moodle demo site, so response time and page state can vary.
+- If ChromeDriver and Chrome versions do not match, Selenium may fail before any test step starts. Use matching Chrome for Testing and ChromeDriver versions.
+- If Git reports `dubious ownership`, run:
+
+```powershell
+git config --global --add safe.directory "D:/Documents/Computer Science/Software Testing/Assignment/Assignment 3"
+```

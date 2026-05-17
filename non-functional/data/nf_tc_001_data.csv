@@ -1,0 +1,2 @@
+test_case,login_url,password_input_id,expected_type
+NF-TC-001,https://school.moodledemo.net/login/index.php,password,password

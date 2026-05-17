@@ -1,0 +1,9 @@
+key,value
+base_url,https://school.moodledemo.net
+login_url,https://school.moodledemo.net/login/index.php
+username,teacher
+password,moodle26
+course_name,Mindful Course Creation
+participants_url,https://school.moodledemo.net/user/index.php?id=69
+logout_url,https://school.moodledemo.net/login/index.php?logout=1
+autocomplete_wait_seconds,3

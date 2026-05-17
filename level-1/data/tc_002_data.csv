@@ -1,0 +1,24 @@
+test_id,fullname,shortname,category,numsections,newsitems,credits,start_day,start_month,start_year,start_hour,start_minute,end_day,end_month,end_year,end_hour,end_minute,use_automatic_enddate,expected_text,error_element_id,verification_type
+TC002001,newcourse001,course001,Faculty of Education,27,5,,,,,,,,,,,,TRUE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002002,newcourse002,course002,Faculty of Education,0,5,,,,,,,,,,,,TRUE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002003,newcourse003,course003,Faculty of Education,52,5,,,,,,,,,,,,TRUE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002004,newcourse004,course004,Faculty of Education,27,0,,,,,,,,,,,,TRUE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002005,newcourse005,course005,Faculty of Education,27,10,,,,,,,,,,,,TRUE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002006,newcourse006,course006,Faculty of Education,51,5,,,,,,,,,,,,TRUE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002007,newcourse007,course007,Faculty of Education,1,5,,,,,,,,,,,,TRUE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002008,newcourse008,course008,Faculty of Education,27,9,,,,,,,,,,,,TRUE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002009,newcourse009,course009,Faculty of Education,27,1,,,,,,,,,,,,TRUE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002010,newcourse010,course010,Faculty of Education,,,10,,,,,,,,,,,TRUE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002011,newcourse011,course011,Faculty of Education,,,credits,,,,,,,,,,,TRUE,Module credits number must be numeric.,id_error_customfield_credits,error_element
+TC002012,,course012,Faculty of Education,,,10,,,,,,,,,,,TRUE,Missing full name,id_error_fullname,error_element
+TC002013,newcourse013,,Faculty of Education,,,,,,,,,,,,,,TRUE,Missing short name,id_error_shortname,error_element
+TC002014,newcourse014,course014,,,,10,,,,,,,,,,,TRUE,You must supply a value here.,id_error_category,error_element
+TC002015,newcourse015,course015,Faculty of Education,,,,21,April,2026,15,30,1,May,2026,9,30,FALSE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002016,newcourse016,course016,Faculty of Education,,,,21,April,2026,15,30,19,April,2026,9,30,FALSE,The course end date must be after the start date.,id_error_enddate,error_element
+TC002017,,,,,,,21,April,2026,15,30,1,May,2026,9,30,FALSE,Missing full name,id_error_fullname,error_element
+TC002018,newcourse018,course018,Faculty of Education,,,10,21,April,2026,17,0,27,April,2026,17,0,FALSE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002020,newcourse020,course020,Faculty of Education,,,,21,April,2026,17,0,27,April,2026,17,0,FALSE,Showing all 1 courses,,"//div[starts-with(@id, 'yui_3_18_1_1_1_')]/div"
+TC002023,newcourse023a,course020,Faculty of Education,,,,21,April,2026,17,0,27,April,2026,17,0,FALSE,Short name is already used for another course (newcourse020),id_error_shortname,error_element
+TC002019,newcourse019,course019,Faculty of Education,,,abc,21,April,2026,17,0,27,April,2026,17,0,FALSE,Module credits number must be numeric.,id_error_customfield_credits,error_element
+TC002021,newcourse021,course021,Faculty of Education,,,10,21,April,2026,17,0,20,April,2026,17,0,FALSE,The course end date must be after the start date.,id_error_enddate,error_element
+TC002022,,,,,,,21,April,2026,17,0,27,April,2026,17,0,FALSE,Missing full name,id_error_fullname,error_element

@@ -1,0 +1,28 @@
+element_name,by,value
+username_field,id,username
+password_field,id,password
+login_button,id,loginbtn
+enrol_users_button,xpath,//input[@value='Enrol users']
+search_box,xpath,"//div[contains(@class,'form-autocomplete-input')]/input[@placeholder='Search']"
+show_more_link,xpath,"//a[contains(.,'Show more')]"
+start_date_select,id,id_startdate
+start_day_select,id,id_startdateselect_day
+start_month_select,id,id_startdateselect_month
+start_year_select,id,id_startdateselect_year
+start_hour_select,id,id_startdateselect_hour
+start_minute_select,id,id_startdateselect_minute
+end_enabled_checkbox,id,id_timeend_enabled
+end_day_select,id,id_timeend_day
+end_month_select,id,id_timeend_month
+end_year_select,id,id_timeend_year
+end_hour_select,id,id_timeend_hour
+end_minute_select,id,id_timeend_minute
+role_select,id,id_roletoassign
+error_message_danger,xpath,"//div[contains(@class,'alert-danger')]"
+error_message_feedback,xpath,"//div[contains(@class,'invalid-feedback') or contains(@class,'form-control-feedback')]"
+error_message_span,xpath,"//span[contains(@class,'error')]"
+submit_enrol_button,xpath,"//button[contains(text(),'Enrol selected users and cohorts')]"
+user_suggestion_xpath,xpath,"//li[contains(.,'{user_name}')]"
+participant_user_row_xpath,xpath,"//tr[contains(.,'{user_name}')]"
+unenrol_button_in_user_row_xpath,xpath,"//tr[contains(.,'{user_name}')]//a[.//*[contains(@class,'fa-trash')] or contains(@title,'Delete enrolment') or contains(@title,'Unenrol') or contains(@data-action,'unenrol')]"
+unenrol_confirm_button,xpath,"//button[contains(.,'Unenrol') or contains(.,'unenrol') or contains(.,'Yes') or contains(.,'Confirm') or contains(.,'Delete enrolment')]"

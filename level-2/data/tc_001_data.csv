@@ -1,0 +1,19 @@
+test_id,url,username_id,password_id,loginbtn_id,username,password,expected_text,xpath_to_verify,should_logout
+TC001001,https://school.moodledemo.net/login/index.php,username,password,loginbtn,student,moodle26,Dashboard,//header[@id='page-header']/div/div[2]/div/div/div,TRUE
+TC001002,https://school.moodledemo.net/login/index.php,username,password,loginbtn,student,moodle,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001003,https://school.moodledemo.net/login/index.php,username,password,loginbtn,student,something,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001004,https://school.moodledemo.net/login/index.php,username,password,loginbtn,alicehill,moodle25,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001005,https://school.moodledemo.net/login/index.php,username,password,loginbtn,markellis,moodle,Dashboard,//header[@id='page-header']/div/div[2]/div/div/div,TRUE
+TC001006,https://school.moodledemo.net/login/index.php,username,password,loginbtn,alicehill,,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001007,https://school.moodledemo.net/login/index.php,username,password,loginbtn,noname,moodle25,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001008,https://school.moodledemo.net/login/index.php,username,password,loginbtn,,moodle,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001009,https://school.moodledemo.net/login/index.php,username,password,loginbtn,,,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001010,https://school.moodledemo.net/login/index.php,username,password,loginbtn,manager,moodle26,Dashboard,//header[@id='page-header']/div/div[2]/div/div/div,TRUE
+TC001011,https://school.moodledemo.net/login/index.php,username,password,loginbtn,teacher,moodle,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001012,https://school.moodledemo.net/login/index.php,username,password,loginbtn,peterkelly,moodle,Please read our Cookie statement,//div[@id='region-main']/div/div[2]/h3,TRUE
+TC001013,https://school.moodledemo.net/login/index.php,username,password,loginbtn,user,moodle,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001014,https://school.moodledemo.net/login/index.php,username,password,loginbtn,parent,moodle26,Dashboard,//header[@id='page-header']/div/div[2]/div/div/div,TRUE
+TC001015,https://school.moodledemo.net/login/index.php,username,password,loginbtn,parent,moodle,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001016,https://school.moodledemo.net/login/index.php,username,password,loginbtn,henryross,moodle,Please read our Cookie statement,//div[@id='region-main']/div/div[2]/h3,TRUE
+TC001017,https://school.moodledemo.net/login/index.php,username,password,loginbtn,alicehill,anything,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
+TC001018,https://school.moodledemo.net/login/index.php,username,password,loginbtn,user,random,Unable to log in,//div[@id='loginerrormessage']/strong,FALSE
